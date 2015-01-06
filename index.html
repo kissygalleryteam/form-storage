@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Form-storage : 自动保存表单填写内容到本地。">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Form-storage</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/kissygalleryteam/form-storage">View on GitHub</a>
+
+          <h1 id="project_title">Form-storage</h1>
+          <h2 id="project_tagline">自动保存表单填写内容到本地。</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/kissygalleryteam/form-storage/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/kissygalleryteam/form-storage/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>
+<a id="form-storage" class="anchor" href="#form-storage" aria-hidden="true"><span class="octicon octicon-link"></span></a>form-storage</h2>
+
+<p>这是一个辅助功能插件，旨在提高用户填写表单时的工作效率，节省不必要的重复劳动时间。代码量少，功能简单，环保，绿色，节能。</p>
+
+<ul>
+<li>版本：1.0</li>
+<li>教程：<a href="http://gallery.kissyui.com/form-storage/1.0/guide/index.html">http://gallery.kissyui.com/form-storage/1.0/guide/index.html</a>
+</li>
+<li>demo：<a href="http://gallery.kissyui.com/form-storage/1.0/demo/index.html">http://gallery.kissyui.com/form-storage/1.0/demo/index.html</a>
+</li>
+<li>作者：舒克(<a href="mailto:shuke.cl@taobao.com">shuke.cl@taobao.com</a>)</li>
+</ul>
+
+<h3>
+<a id="why-" class="anchor" href="#why-" aria-hidden="true"><span class="octicon octicon-link"></span></a>why ?</h3>
+
+<ul>
+<li>常常遇到表单要填写项太多，填完提交一次如同初中政治考试交卷的感脚，如果中途再去上个厕所回来发现网页被“宠物”给关掉了，停电了，windows蓝屏了…</li>
+<li>查询表单，查询条件较多，经常需要重复查询想偷懒不想重复输入的情况.</li>
+<li>开发过程中需要反复测试表单数据完整性时。。。</li>
+</ul>
+
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<ul>
+<li>保存表单内容到本地，避免丢失和重复填写。</li>
+<li>可自动保存。</li>
+<li>可对保存的表单进行备注方便归类。</li>
+</ul>
+
+<h3>
+<a id="invoke" class="anchor" href="#invoke" aria-hidden="true"><span class="octicon octicon-link"></span></a>Invoke</h3>
+
+<div class="highlight highlight-javascript"><pre>    KISSY.use(<span class="pl-s1"><span class="pl-pds">'</span>gallery/form-storage/1.0/index<span class="pl-pds">'</span></span> , <span class="pl-st">function</span> (<span class="pl-vpf">S</span>,<span class="pl-vpf">Fs</span>){
+        <span class="pl-k">new</span> <span class="pl-en">Fs</span>({
+            node <span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>#J_Form<span class="pl-pds">'</span></span>
+        })
+        <span class="pl-c">//一个页面多个表单也可以这样</span>
+        <span class="pl-c">//Fs.bind({</span>
+        <span class="pl-c">//  selector: 'form'</span>
+        <span class="pl-c">//});</span>
+        <span class="pl-c">//</span>
+        <span class="pl-c">//</span>
+    });</pre></div>
+
+<h3>
+<a id="configelement-attribute--attribute" class="anchor" href="#configelement-attribute--attribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>Config(element attribute &amp;&amp; attribute)</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">element attribute</th>
+<th align="left">attribute</th>
+<th align="left">value</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">data-save</td>
+<td align="left">无</td>
+<td align="left">on   off</td>
+<td align="left">启用自动存储，建议form有自己的ID,否则会自动创建，且以后有新表单存在时可能带来数据不能对应的问题</td>
+</tr>
+<tr>
+<td align="left">data-auto-save</td>
+<td align="left">allowAutoSave</td>
+<td align="left">on   off</td>
+<td align="left">是否启用自动保存功能，启用后会在提交表单以及设定的间隔时间自动进行存储</td>
+</tr>
+<tr>
+<td align="left">data-auto-save-timer</td>
+<td align="left">autoSaveTimer</td>
+<td align="left">300(单位：秒)</td>
+<td align="left">Number,自动保存的间隔时间，默认300秒</td>
+</tr>
+<tr>
+<td align="left">data-auto-save-max</td>
+<td align="left">autoSaveMax</td>
+<td align="left">5</td>
+<td align="left">自动保存的最大条数，默认为5，请不要设置过大，storage只有5M的大小限制</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">event</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">restore</td>
+<td align="left">e.source:用于回填的数据源 <br> e.form_id 完成回填的表单id</td>
+<td align="left">表单所有项还原完成后触发</td>
+</tr>
+<tr>
+<td align="left">restoreitem</td>
+<td align="left">e.node:完成回填的输入节点(input,select,textarea)</td>
+<td align="left">单个表单项值完成回填后触发，常用于有JS交互的表单项</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="method" class="anchor" href="#method" aria-hidden="true"><span class="octicon octicon-link"></span></a>Method</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">method</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">save</td>
+<td align="left">要保存的数据 可选</td>
+<td align="left">调用后自动保存当前表单内容到本地</td>
+</tr>
+</tbody>
+</table>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Form-storage maintained by <a href="https://github.com/kissygalleryteam">kissygalleryteam</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
