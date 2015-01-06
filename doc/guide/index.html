@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>form-storage</title>
+    <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com-prettify.css">
+    <link rel="stylesheet" href="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com.css">
+    <script src="http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://cdn.staticfile.org/prettify/r298/prettify.min.js"></script>
+    <script src="http://g.tbcdn.cn/kissy/k/1.4.8/seed-min.js" data-config="{combine:true}"></script>
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div id="header"><a href="http://docs.kissyui.com/" class="logo">kissy</a>
+      <nav><a href="http://docs.kissyui.com/1.4/docs/html/coms.html">优秀组件推荐</a></nav>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3 bs-docs-sidebar">
+          <ul data-spy="affix" data-offset-top="0" class="nav nav-list bs-docs-sidenav"></ul>
+        </div>
+        <div class="span9 bs-docs-content">
+          <h1 data-id="undefined" class="title">form-storage</h1>
+          <p class="author-wrapper"><span>组件有问题？旺旺联系作者：</span><a href="https://github.com/undefined" target="_blank" data-name="舒克" class="author"><img src="http://0.gravatar.com/avatar/0ec66cfb60c035a8c96fac6986a40f10?s=60" alt="舒克"></a><span class="author-name">舒克</span>
+          </p>
+          <div class="common-link"><a href="../demo/index.html" target="_blank" class="demo">示例</a><a href="https://github.com/kissygalleryteam/form-storage" target="_blank" class="source">源码</a></div>
+          <p class="com-info"><span class="info-label">View</span><span data-com="form-storage" class="J_View">362</span></p>
+          <p class="com-info"><span class="info-label">所属分类</span><a href="http://kpm.taobao.net/list/表单">表单</a>
+          </p>
+          <p class="com-info"><span class="info-label">kissy版本</span><span>1.4.X</span>
+          </p><h2 id="form-storage">form-storage</h2>
+<p>这是一个辅助功能插件，旨在提高用户填写表单时的工作效率，节省不必要的重复劳动时间。代码量少，功能简单，环保，绿色，节能。</p>
+<ul>
+<li>版本：2.0.0</li>
+<li>教程：<a href="http://kg.kissyui.com/form-storage/2.0.0/guide/index.html">http://kg.kissyui.com/form-storage/2.0.0/guide/index.html</a></li>
+<li>demo：<a href="http://kg.kissyui.com/form-storage/2.0.0/demo/index.html">http://kg.kissyui.com/form-storage/2.0.0/demo/index.html</a></li>
+<li>作者：舒克(shuke.cl@taobao.com)</li>
+</ul>
+<h3 id="why-">why ?</h3>
+<ul>
+<li>常常遇到表单要填写项太多，填完提交一次如同初中政治考试交卷的感脚，如果中途再去上个厕所回来发现网页被“宠物”给关掉了，停电了，windows蓝屏了…</li>
+<li>查询表单，查询条件较多，经常需要重复查询想偷懒不想重复输入的情况.</li>
+<li>开发过程中需要反复测试表单数据完整性时。。。</li>
+</ul>
+<h3 id="usage">Usage</h3>
+<ul>
+<li>保存表单内容到本地，避免丢失和重复填写。</li>
+<li>可自动保存。</li>
+<li>可对保存的表单进行备注方便归类。</li>
+</ul>
+<h3 id="invoke">Invoke</h3>
+<pre><code class="lang-javascript">    KISSY.use(&#39;kg/form-storage/2.0.0/index&#39; , function (S,Fs){
+        new Fs({
+            node : &#39;#J_Form&#39;
+        })
+        //一个页面多个表单也可以这样
+        //Fs.bind({
+        //    selector: &#39;form&#39;
+        //});
+        //
+        //
+    });
+</code></pre>
+<h3 id="config-element-attribute-attribute-">Config(element attribute &amp;&amp; attribute)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">element attribute</th>
+<th style="text-align:left">attribute</th>
+<th style="text-align:left">value</th>
+<th style="text-align:left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">data-save</td>
+<td style="text-align:left">无</td>
+<td style="text-align:left">on   off</td>
+<td style="text-align:left">启用自动存储，建议form有自己的ID,否则会自动创建，且以后有新表单存在时可能带来数据不能对应的问题</td>
+</tr>
+<tr>
+<td style="text-align:left">data-auto-save</td>
+<td style="text-align:left">allowAutoSave</td>
+<td style="text-align:left">on   off</td>
+<td style="text-align:left">是否启用自动保存功能，启用后会在提交表单以及设定的间隔时间自动进行存储</td>
+</tr>
+<tr>
+<td style="text-align:left">data-auto-save-timer</td>
+<td style="text-align:left">autoSaveTimer</td>
+<td style="text-align:left">300(单位：秒)</td>
+<td style="text-align:left">Number,自动保存的间隔时间，默认300秒</td>
+</tr>
+<tr>
+<td style="text-align:left">data-auto-save-max</td>
+<td style="text-align:left">autoSaveMax</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">自动保存的最大条数，默认为5，请不要设置过大，storage只有5M的大小限制</td>
+</tr>
+</tbody>
+</table>
+<h3 id="events">Events</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">event</th>
+<th style="text-align:left">param</th>
+<th style="text-align:left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">restore</td>
+<td style="text-align:left">e.source:用于回填的数据源 <br/> e.form_id 完成回填的表单id</td>
+<td style="text-align:left">表单所有项还原完成后触发</td>
+</tr>
+<tr>
+<td style="text-align:left">restoreitem</td>
+<td style="text-align:left">e.node:完成回填的输入节点(input,select,textarea)</td>
+<td style="text-align:left">单个表单项值完成回填后触发，常用于有JS交互的表单项</td>
+</tr>
+</tbody>
+</table>
+<h3 id="method">Method</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">method</th>
+<th style="text-align:left">param</th>
+<th style="text-align:left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">save</td>
+<td style="text-align:left">要保存的数据 可选</td>
+<td style="text-align:left">调用后自动保存当前表单内容到本地</td>
+</tr>
+</tbody>
+</table>
+
+          <div style="display:none;"><script type="text/javascript" src="http://tajs.qq.com/stats?sId=36378479" charset="UTF-8"></script></div>
+          <script src="http://docs.kissyui.com/1.4/source/guideline/templates/assets/com.js"></script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
